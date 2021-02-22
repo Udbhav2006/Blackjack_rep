@@ -173,7 +173,7 @@ while new_game:
                     print('HOW MANY FREAKIN TIMES WILL U MESS UP IDIOT')
                     regular_play(player_choice, player, deck)
 
-        # Conclude game finally
+        # Conclude game finally yay
         print('')
         print('***************** Conclusion *****************')
         print("The dealer has these cards:")
