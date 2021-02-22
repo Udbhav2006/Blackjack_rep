@@ -1,0 +1,55 @@
+Incase you don't wanna read: https://www.youtube.com/watch?v=VB-6MvXvsKo
+
+OBJECTIVE: to get your total as close as possible to 21(without going over it) before dealer
+---------------------------------------------------------------------------------------------------------------
+CARD VALUES:
+
+Face cards(J,Q&K) have a value of 10 points
+Cards 2-10 are worth their face value
+Ace is either 1 or 11, whatever the player wants => player can keep changing it
+---------------------------------------------------------------------------------------------------------------
+GAME SETUP:
+
+Each person is given a number of chips(in round 1...as rounds progress, winners will have more chips and losers less obviously)
+Each person places a bet(everyone's need not be same) in the form of chips.
+52 card deck(shuffled and is with dealer(the DECK IS NOT PLATED WITH, it is used only to deal cards))
+Each player is dealt 2 cards(both facing up)
+dealer gets 2 cards(one with face up and one with face down)
+---------------------------------------------------------------------------------------------------------------
+GAME PLAY:
+
+Player's play:
+The player to the left of the dealer plays first(here, player 1 plays first, then player 2 and so on....)
+Each player has choice to hit or stay
+hit -> indicates u want a card
+stay -> indicates you dont want a card(your turn ends when u stay)
+You can hit as many times as you want one after another and when u signal stay, your turn is up.
+If a players total exceeds 21, it is a bust and they lose, their bet going to the dealer.
+
+Dealer's play:
+After all players' turn is over, the dealer flips the face-down card and thus both their cards are shown.
+---------------------------------------------------------------------------------------------------------------
+CONCLUSION OF GAME & PAYOUT RULES:
+
+All the players who busted lose and their bets go to the dealer.
+All players whose total is less than that of the dealer lose and their bets go to the dealer.
+Players,who don't bust and whose total is greater than that of the dealer, win their bet, whose amount is added to their total chips.
+*The winners prize amount in chips comes from the casino(the dealer) and not from any other player.
+---------------------------------------------------------------------------------------------------------------
+SPECIAL CASES:
+
+<>Blackjack: At start of round, when player is dealt 2 cards, if the total is 21, ttheir is called a blackjack.
+	     A blackjack payout is 3-to-2, i.e, the player wins 3 chips for every 2 chips they have.
+
+<>Split: If a player is dealt two cards are dealt the same rank, the player has an option to split them. 
+	 If they do, each card is given another card and both sets are hit on and stayed on separately.
+
+<>Double down: A player can double down by doubling their bet and signalling.
+	       If a player doubles down, they get another card an must stay.
+	       A double down is usually done when the player's first two cards' total is 9/10/11.
+
+<>Push: If a player's and the dealer's total are equal, it is a push.
+	In this case, the player keeps their original bet.
+	The dealer has to hit if their total is 17 or less and has to stay if their total is 17 or more.
+	After the dealer play, the player gets a payout if eligible according to the payout rules .
+	If he doesn't get a payout, they keep their original bet as stated above.
