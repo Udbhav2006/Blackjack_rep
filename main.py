@@ -11,7 +11,6 @@ while new_game:
     dealer = Player('Dealer', 0)
     player_list = []
     players_num = num_of_players()
-    winners_list = []
 
     i = 1
     for each in range(0, players_num):
@@ -22,6 +21,7 @@ while new_game:
 
     while new_round:
 
+        winners_list = []
         deck = Deck()
         deck.shuffle()
 
@@ -167,15 +167,14 @@ while new_game:
                 choice = 'tatti'
                 while player_choice == 'D' and choice != 'done':
                     choice = double_down(player_choice, bets, player, deck)
-                    if choice in ['H','S']:
+                    if choice in ['H', 'S']:
                         player_choice = choice
                         break
 
                 if player_choice in ['H', 'S']:
-                    print('HOW MANY FREAKIN TIMES WILL U MESS UP IDIOT')
                     regular_play(player_choice, player, deck)
 
-        # Conclude game finally yay
+        # Conclude game
         print('')
         print('***************** Conclusion *****************')
         print("The dealer has these cards:")
@@ -247,8 +246,9 @@ while new_game:
     Next round => NR
     New game => NG
     Exit => E
+                  
+Enter the code of what you want to do: ''')
 
-    Enter the code of what you want to do: ''')
         if game_on_choice == 'NR':
             new_round = True
         elif game_on_choice == 'NG':

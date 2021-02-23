@@ -61,9 +61,7 @@ def double_down(player_choice, bets, player, deck):
     if bets[player.index] * 2 > player.chips.number:
         print(f'{player.name} has insufficient funds to double down')
         player_choice = player.play()
-        print('Udbhav u idiot')
         if player_choice in ['H', 'S']:
-            print('fdhghdfghdfghdfghdfghdfghdfghdghdfghdfghdfgh')
             return player_choice
     else:
         print(f'{player.name} has chosen to double down')
