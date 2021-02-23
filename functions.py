@@ -64,7 +64,7 @@ def double_down(player_choice, bets, player, deck):
         print('Udbhav u idiot')
         if player_choice in ['H', 'S']:
             print('fdhghdfghdfghdfghdfghdfghdfghdghdfghdfghdfgh')
-            return True
+            return player_choice
     else:
         print(f'{player.name} has chosen to double down')
         for card in deck.deal(1):
@@ -72,7 +72,7 @@ def double_down(player_choice, bets, player, deck):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
-        return True
+        return 'done'
 
 
 def regular_play(player_choice, player, deck):

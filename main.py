@@ -164,11 +164,13 @@ while new_game:
                 player_choice = player.play()
 
                 done = False
-                while player_choice == 'D':
-                    done = double_down(player_choice, bets, player, deck)
-                    if done:
-                        player_choice = player_choice
+                choice = 'tatti'
+                while player_choice == 'D' and choice != 'done':
+                    choice = double_down(player_choice, bets, player, deck)
+                    if choice in ['H','S']:
+                        player_choice = choice
                         break
+
                 if player_choice in ['H', 'S']:
                     print('HOW MANY FREAKIN TIMES WILL U MESS UP IDIOT')
                     regular_play(player_choice, player, deck)
