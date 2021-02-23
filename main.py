@@ -26,7 +26,12 @@ while new_game:
         deck.shuffle()
 
         # Dealing cards
-        dealer.cards = deck.deal(2)
+        for card in deck.deal(1):
+            dealer.cards.append(card)
+        for cardabc in deck.all_cards:
+            if cardabc.rank == 'Ace':
+                dealer.cards.append(cardabc)
+                break
 
         print('')
         print('The dealer has 2 cards')
@@ -177,9 +182,6 @@ while new_game:
         # Conclude game
         print('')
         print('***************** Conclusion *****************')
-        print("The dealer has these cards:")
-        for card in dealer.cards:
-            print(card)
 
         for player in player_list:
             if len(player.cards2) != 0:
@@ -191,33 +193,40 @@ while new_game:
                     print(f"Result for card set {a}: ")
                     a += 1
 
-                if bust(player.cards):
+                if bust(player.cards) and has_ace(card_set) == False:
                     print(f"{player.name}'s total value is {get_cards_val(card_set)}")
                     print(f"{player.name} has busted and has lost their bet.")
+                    player.chips.number -= bets[player.index]
+
 
                 else:
+                    print("The dealer has these cards:")
+                    for card in dealer.cards:
+                        print(card)
+
                     if has_ace(card_set) or has_ace(dealer.cards):
                         print('')
                         print(f'{player.name} choose the value of Ace')
                         ace_val = choose_ace_val()
                         values['Ace'] = ace_val
                         print(f'val of ace is {ace_val}')
-                        cards_val = get_cards_val(card_set)
-                        dealer_val = get_cards_val(dealer.cards)
+                        cards_val = get_cards_val(card_set, ace_val)
+                        dealer_val = get_cards_val(dealer.cards, ace_val)
                     else:
                         cards_val = get_cards_val(card_set)
                         dealer_val = get_cards_val(dealer.cards)
                     print(f"Dealer's total value is {get_cards_val(dealer.cards)}")
 
-                    if dealer_val > 21:
-                        print('The dealer busted and you win your bet.')
-                        player.chips += bets[player.index]
-
-                    elif cards_val > 21:
+                    if bust(card_set):
                         player.chips.number -= bets[player.index]
                         print('')
                         print(f"{player.name}'s total value is {cards_val}")
                         print(f"{player.name} has busted and has lost their bet.")
+
+
+                    elif bust(dealer.cards):
+                        print('The dealer busted and you win your bet.')
+                        player.chips += bets[player.index]
 
                     elif cards_val < dealer_val:
                         print('')

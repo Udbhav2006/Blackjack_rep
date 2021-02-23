@@ -25,10 +25,20 @@ def place_bets(player_list):
     return bets
 
 
-def get_cards_val(cards_list):
+def get_cards_val(cards_list, ace_val=0):
     cards_val = 0
-    for card in cards_list:
-        cards_val += card.value
+    if ace_val == 0:
+
+        for card in cards_list:
+            cards_val += card.value
+
+    else:
+        for ace_card in cards_list:
+            if ace_card.rank == 'Ace':
+                ace_card.value = ace_val
+
+        for card in cards_list:
+            cards_val += card.value
 
     return cards_val
 
