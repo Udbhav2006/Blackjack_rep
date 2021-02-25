@@ -49,7 +49,7 @@ class Player:
         self.index = index
         self.cards = []
         self.cards2 = []
-        self.cards_sets = [self.cards]
+        self.cards_sets = []
         self.chips = Chips(10)
 
     def place_bet(self):

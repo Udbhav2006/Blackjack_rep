@@ -1,3 +1,6 @@
+from classes import Deck, Player
+
+
 def num_of_players():
     choice = 'wrong'
 
@@ -25,29 +28,32 @@ def place_bets(player_list):
     return bets
 
 
-def get_cards_val(cards_list, ace_val=0):
-    cards_val = 0
-    if ace_val == 0:
-
-        for card in cards_list:
-            cards_val += card.value
-
-    else:
-        for ace_card in cards_list:
-            if ace_card.rank == 'Ace':
-                ace_card.value = ace_val
-
-        for card in cards_list:
-            cards_val += card.value
-
-    return cards_val
-
-
 def has_ace(cards_list):
     for card in cards_list:
         if card.rank == 'Ace':
             return True
     return False
+
+
+def get_cards_val(func_cards_list, func_ace_val=0):
+    cards_val = 0
+    if has_ace(func_cards_list):
+        for card in func_cards_list:
+
+            if card.rank == 'Ace':
+                card.value = func_ace_val
+
+            cards_val += card.value
+
+        return cards_val
+
+    if not has_ace(func_cards_list):
+
+        print(func_cards_list)
+
+        for each_card in func_cards_list:
+            cards_val += each_card.value
+        return cards_val
 
 
 def choose_ace_val():
@@ -106,3 +112,14 @@ def regular_play(player_choice, player, deck):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
+
+# d = Deck()
+# # print(has_ace(d.all_cards))
+# # print(get_cards_val(d.all_cards, 1))
+# a = Player('ud',1)
+# b = Player('nasser',2)
+# c = Player('khalil',3)
+# l = [a,b,c]
+#
+# starting_deal(l,d)
+# print(a.cards_sets)
