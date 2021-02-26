@@ -1,0 +1,7 @@
+Background size 700x700
+
+loop through cards and paste like:
+a = 0
+for card in cards:
+    paste(100+a,100+a)
+    a += 20(for eg...val not calculated)
