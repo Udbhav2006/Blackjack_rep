@@ -5,3 +5,12 @@ a = 0
 for card in cards:
     paste(100+a,100+a)
     a += 20(for eg...val not calculated)
+
+Resize cards like:
+
+im = Image.open('Cards_pics/Ace of spades.png')
+im.thumbnail((100,100))
+im.save('Cards_pics/Ace of spades.png')
+im.show()
+
+Gettting card images from wikipedia

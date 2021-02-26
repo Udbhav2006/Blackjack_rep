@@ -1,5 +1,6 @@
 from PIL import Image
 
-im = Image.open('spaceship.jpg')
-new_im = im.resize((700,700))
-new_im.show()
+im = Image.open('Cards_pics/Ace of spades.png')
+im.thumbnail((100,100))
+im.save('Cards_pics/Ace of spades.png')
+im.show()
