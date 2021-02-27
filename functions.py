@@ -1,5 +1,6 @@
 from classes import Deck, Player
-
+import os
+from PIL import Image
 
 def num_of_players():
     choice = 'wrong'
@@ -113,13 +114,15 @@ def regular_play(player_choice, player, deck):
         for card in player.cards:
             print(card)
 
-# d = Deck()
-# # print(has_ace(d.all_cards))
-# # print(get_cards_val(d.all_cards, 1))
-# a = Player('ud',1)
-# b = Player('nasser',2)
-# c = Player('khalil',3)
-# l = [a,b,c]
-#
-# starting_deal(l,d)
-# print(a.cards_sets)
+def get_pics(cards_list):
+    pics_paths = []
+    for card in cards_list:
+        for pic in os.scandir('D:/Udbhav/Blackjack_rep/Cards_pics'):
+            if card.name in pic.path:
+                pics_paths.append(pic.path)
+
+def paste_pics(pics_paths, background_path):
+    back_im = Image.open('background.jpg')
+    back_im_copy = back_im.copy()
+    for path in pics_paths:
+        back_im_copy.paste()
