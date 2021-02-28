@@ -10,8 +10,16 @@ import os
 # for pic in obj:
 #     im = Image.open(pic.path)
 #     im.show()
-
-im = Image.open('table.jpg')
-im.thumbnail((1300,700))
-im.save('table.jpg')
+a = Image.open('big_back.jpg')
+card = Image.open('Cards_pics/Ace of spades.png/')
+q = Image.open('Cards_pics/Queen of clubs.png')
+d = [card,q]
+im = a.copy()
+im.thumbnail((1300,650))
+i = 1
+for each in d:
+    im.paste(each, (i,1))
+    i+=82
 im.show()
+print(im.size)
+
