@@ -131,9 +131,10 @@ def get_pics(cards_list):
                 for each in path_list:
                     path = path+each+'/'
                     o+=1
+            path = path[:-1]
             print(type(path))
             print(path)
-            if card.name in path:
+            if card.name:
                 print('yesssss')
                 pics_paths.append(path)
 
@@ -141,24 +142,31 @@ def get_pics(cards_list):
     print(pics_paths)
     return pics_paths
 
-def paste_pics(pics_paths):
+def paste_pics(pics_paths, player):
     # print(pics_paths)
     back_im = Image.open('big_back.jpg')
     back_im_copy = back_im.copy()
+    num = player.index
+    num_im = Image.open(f'Num pics/{num}.png')
+    num_im.thumbnail((133,47))
+    num_im.save
+    back_im_copy.paste(num_im)
     i = 1
     print('=======================================================================================')
     print(pics_paths)
     for path in pics_paths:
         print(path)
         p = Image.open(path)
-        p.show()
-        back_im_copy.paste(p, (i,44))
-        i += 81
+        # p.show()
+        back_im_copy.paste(p, (i,100))
+        x,y = p.size
+        i += (x+1)
     back_im_copy.show()
 
+player = Player('John', 1)
 d = Deck()
 l = d.deal(4)
 # print(l)
 g = get_pics(l)
-paste_pics(g)
+paste_pics(g, player)
 
