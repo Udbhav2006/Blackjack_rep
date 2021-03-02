@@ -144,13 +144,13 @@ def get_pics(cards_list):
 
 def paste_pics(pics_paths, player):
     # print(pics_paths)
-    back_im = Image.open('big_back.jpg')
+    back_im = Image.open('big_back.png')
     back_im_copy = back_im.copy()
     num = player.index
-    num_im = Image.open(f'Num pics/{num}.png')
-    num_im.thumbnail((133,47))
+    num_im = Image.open(f'Num pics/{num}.jpg')
+    num_im.thumbnail((80,80))
     num_im.save
-    back_im_copy.paste(num_im)
+    back_im_copy.paste(num_im, (500,250))
     i = 1
     print('=======================================================================================')
     print(pics_paths)
@@ -163,7 +163,7 @@ def paste_pics(pics_paths, player):
         i += (x+1)
     back_im_copy.show()
 
-player = Player('John', 1)
+player = Player('John',2)
 d = Deck()
 l = d.deal(4)
 # print(l)

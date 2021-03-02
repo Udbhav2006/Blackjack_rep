@@ -10,7 +10,7 @@ import os
 # for pic in obj:
 #     im = Image.open(pic.path)
 #     im.show()
-a = Image.open('big_back.jpg')
+a = Image.open('big_back_no_text.jpg')
 card = Image.open('Cards_pics/Ace of spades.png/')
 q = Image.open('Cards_pics/Queen of clubs.png')
 d = [card,q]
