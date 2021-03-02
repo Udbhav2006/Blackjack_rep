@@ -1,4 +1,4 @@
-from functions import num_of_players, starting_deal, place_bets, get_cards_val, has_ace, choose_ace_val, bust, \
+from bj_functions import num_of_players, starting_deal, place_bets, get_cards_val, has_ace, choose_ace_val, bust, \
     double_down, regular_play
 from classes import Player, Deck
 
@@ -132,7 +132,7 @@ while new_game:
                     player_choice = player.play()
 
                     while player_choice == 'D':
-                        if bets[player.index] * 2 > player.chips.value:
+                        if bets[player.index] * 2 > player.chips.number:
                             print(f'{player.name} has insufficient funds to double down')
                             player_choice = player.play()
                         else:
