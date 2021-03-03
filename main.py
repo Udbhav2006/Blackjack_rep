@@ -1,5 +1,5 @@
 from bj_functions import num_of_players, starting_deal, place_bets, get_cards_val, has_ace, choose_ace_val, bust, \
-    double_down, regular_play
+    double_down, regular_play, paste_pics_normal
 from classes import Player, Deck
 
 new_game = True
@@ -42,9 +42,9 @@ while new_game:
         print('You can only see one card of the dealer')
         print(f"One of the dealer's cards is {dealer.cards[0]}")
         print('')
-        i = 1
-        print(player_list)
+        paste_pics_normal(dealer, 1)
         starting_deal(player_list, deck)
+
 
         print('')
 
@@ -57,6 +57,7 @@ while new_game:
             print(f"{player.name} has these cards:")
             for card in player.cards:
                 print(card)
+            paste_pics_normal(player)
             print('')
 
             # Blackjack check and execution if needed
@@ -187,7 +188,7 @@ while new_game:
                         regular_play(player_choice, player, deck)
 
             if regular:
-
+                player_choice = player.play()
                 done = False
                 choice = 'tatti'
                 while player_choice == 'D' and choice != 'done':
@@ -203,7 +204,9 @@ while new_game:
         print('')
         print('***************** Conclusion *****************')
 
+
         for player in player_list:
+            player.cards_sets.append(player.cards)
             if len(player.cards2) != 0:
                 player.cards_sets.append(player.cards2)
 
@@ -259,6 +262,7 @@ while new_game:
                     elif bust(dealer.cards):
                         print('The dealer busted and you win your bet.')
                         player.chips.number += bets[player.index]
+                        winners_list.append(player)
 
                     elif cards_val < dealer_val:
                         print('')

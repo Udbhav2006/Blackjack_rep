@@ -3,6 +3,7 @@ import os
 from PIL import Image
 from pathlib import Path
 
+
 def num_of_players():
     choice = 'wrong'
 
@@ -115,7 +116,28 @@ def regular_play(player_choice, player, deck):
         for card in player.cards:
             print(card)
 
-def get_pics(cards_list):
+
+# def get_pics_normal(players):
+#     for person in players:
+#         pics_paths = []
+#         cards_list = person.cards
+#         for card in cards_list:
+#             print(card)
+#             for pic in os.scandir('New folder/Cards_pics'):
+#                 path_list = pic.path.split('\\')
+#                 path = ''
+#                 o = 0
+#                 for each in path_list:
+#                     path = path + each + '/'
+#                     o += 1
+#                 path = path[:-1]
+#                 if card.name in path:
+#                     pics_paths.append(path)
+#
+#     return pics_paths
+
+
+def get_pics_for_a_set(cards_list):
     pics_paths = []
     for card in cards_list:
         print(card)
@@ -124,71 +146,80 @@ def get_pics(cards_list):
             path = ''
             o = 0
             for each in path_list:
-                path = path+each+'/'
-                o+=1
+                path = path + each + '/'
+                o += 1
             path = path[:-1]
-            print('PATH PATH PATH')
-            print(path)
-            print(type(path))
-            print('PATH PATH PATH')
             if card.name in path:
                 pics_paths.append(path)
 
     return pics_paths
 
-def paste_pics(pics_paths, player, sets=[]):
-    dealer = False
-    num_pic = True
-    sets_pics = False
-    if len(sets) != 0:
-        sets_pics = True
-    if player.name == 'Dealer':
-        dealer = True
-        num_pic = False
 
+def paste_pics_normal(player, dealer_cards_num=0, set2=False):
     back_im = Image.open('big_back.png')
     back_im_copy = back_im.copy()
-    num = player.index
-    if num_pic:
-        num_im = Image.open(f'Num pics/{num}.jpg')
-        num_im.thumbnail((80,80))
-        num_im.save(f'Num pics/{num}.jpg')
-        back_im_copy.paste(num_im, (154,300))
 
-    if dealer:
+    if player.name == 'Dealer':
+        rest_of_cards = 0
+        l = 0
+        while l < dealer_cards_num:
+            print('Entered while')
+            i = 200
+            pics_paths = get_pics_for_a_set(player.cards)
+            for path in pics_paths:
+                p = Image.open(path)
+                back_im_copy.paste(p, (i, 100))
+                x, y = p.size
+                i += (x + 1)
+                rest_of_cards += 1
+                l += 1
+
         i = 200
-        for path in pics_paths:
-            p = Image.open(path)
-            back_im_copy.paste(p, (i,100))
-            x,y = p.size
-            i += (x+1)
-
-
+        for each in range(0,rest_of_cards):
+            p = Image.open('Cards_pics/card_back.png')
+            p.thumbnail((150,150))
+            p.save('Cards_pics/card_back.png')
+            back_im_copy.paste(p, (i, 100))
+            a, b = p.size
+            i += (a + 1)
     else:
-        if sets_pics:
+        num = player.index
+        num_im = Image.open(f'Num pics/{player.index}.jpg')
+        num_im.thumbnail((80, 80))
+        num_im.save(f'Num pics/{num}.jpg')
+        back_im_copy.paste(num_im, (154, 300))
+
+        if not set2:
+            pics_paths = get_pics_for_a_set(player.cards)
             i = 20
             for path in pics_paths:
                 p = Image.open(path)
-
-                back_im_copy.paste(p, (i, 500))
+                back_im_copy.paste(p, (i, 475))
                 x, y = p.size
                 i += (x + 1)
         else:
+            pics_paths = get_pics_for_a_set(player.cards2)
             i = 20
             for path in pics_paths:
                 p = Image.open(path)
-                back_im_copy.paste(p, (i,475))
-                x,y = p.size
-                i += (x+1)
+                back_im_copy.paste(p, (i, 475))
+                x, y = p.size
+                i += (x + 1)
+
+    # ==========================================================================================
+    #                 i = 20
+    #                 for path in pics_paths:
+    #                     s = Image.open('first_set.png')
+    #                     p = Image.open(path)
+    #                     back_im_copy.paste(s, (i,475))
+    #                     back_im_copy.paste(p, (i, 500))
+    #                     x, y = p.size
+    #                     i += (x + 1)
+    #             elif set == 2:
+    #                 i = 20
+    #                 for path in pics_paths:
+    #                     p = Image.open(path)
+    #                     back_im_copy.paste(p, (i,475))
+    #                     x,y = p.size
+    #                     i += (x+1)
     back_im_copy.show()
-
-player = Player('John',2)
-d = Deck()
-abcde = d.deal(1)
-print(abcde)
-# print(l)
-g = get_pics(abcde)
-print(g)
-paste_pics(g, player)
-
-
