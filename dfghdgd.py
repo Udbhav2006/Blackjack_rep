@@ -10,8 +10,8 @@ from PIL import Image
 #     back_im_copy.paste(num_im)
 #     back_im_copy.show()
 
-for pic in os.scandir('New folder/Cards_pics'):
+for pic in os.scandir('Num pics'):
     im = Image.open(pic.path)
-    im.thumbnail((150,150))
+    im.thumbnail((80,80))
     im.save(pic.path)
     # im.show()

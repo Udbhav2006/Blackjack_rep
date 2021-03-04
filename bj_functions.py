@@ -89,8 +89,8 @@ def double_down(player_choice, bets, player, deck, dealer):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
-            p_list = [dealer, player]
-            paste_pics_normal(p_list, 1)
+        p_list = [dealer, player]
+        paste_pics_normal(p_list, 1)
         return 'done'
 
 
@@ -102,8 +102,8 @@ def regular_play(player_choice, player, deck, dealer):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
-            p_list = [dealer, player]
-            paste_pics_normal(p_list, 1)
+        p_list = [dealer, player]
+        paste_pics_normal(p_list, 1)
         print('')
         yes_or_no = 'gsgsdfsd'
         while yes_or_no not in ['Y', 'N']:
@@ -119,28 +119,8 @@ def regular_play(player_choice, player, deck, dealer):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
-            p_list = [dealer, player]
-            paste_pics_normal(p_list, 1)
-
-
-# def get_pics_normal(players):
-#     for person in players:
-#         pics_paths = []
-#         cards_list = person.cards
-#         for card in cards_list:
-#             print(card)
-#             for pic in os.scandir('New folder/Cards_pics'):
-#                 path_list = pic.path.split('\\')
-#                 path = ''
-#                 o = 0
-#                 for each in path_list:
-#                     path = path + each + '/'
-#                     o += 1
-#                 path = path[:-1]
-#                 if card.name in path:
-#                     pics_paths.append(path)
-#
-#     return pics_paths
+        p_list = [dealer, player]
+        paste_pics_normal(p_list, 1)
 
 
 def get_pics_for_a_set(cards_list):
@@ -174,7 +154,6 @@ def paste_pics_normal(players, dealer_cards_num=0, set=0):
             pics_paths = get_pics_for_a_set(player.cards)
             for path in pics_paths:
                 while l < dealer_cards_num:
-                    print('Entered while')
                     p = Image.open(path)
                     back_im_copy.paste(p, (i, 100))
                     x, y = p.size
@@ -226,6 +205,7 @@ def paste_pics_normal(players, dealer_cards_num=0, set=0):
                     i += (x + 1)
 
     back_im_copy.show()
+    return back_im_copy
 
 # d = Deck()
 # d.shuffle()
