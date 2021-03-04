@@ -28,6 +28,7 @@ class Deck:
 
     def shuffle(self):
         random.shuffle(self.all_cards)
+        random.shuffle(self.all_cards)
 
     def deal(self, number):
         cards_being_dealt = []

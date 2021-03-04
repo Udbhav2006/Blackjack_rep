@@ -76,7 +76,7 @@ def bust(cards_list):
     return False
 
 
-def double_down(player_choice, bets, player, deck):
+def double_down(player_choice, bets, player, deck, dealer):
     if bets[player.index] * 2 > player.chips.number:
         print(f'{player.name} has insufficient funds to double down')
         player_choice = player.play()
@@ -89,10 +89,12 @@ def double_down(player_choice, bets, player, deck):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
+            p_list = [dealer, player]
+            paste_pics_normal(p_list, 1)
         return 'done'
 
 
-def regular_play(player_choice, player, deck):
+def regular_play(player_choice, player, deck, dealer):
     while player_choice == 'H':
         print(f'{player.name} has chosen to hit.')
         for card in deck.deal(1):
@@ -100,6 +102,8 @@ def regular_play(player_choice, player, deck):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
+            p_list = [dealer, player]
+            paste_pics_normal(p_list, 1)
         print('')
         yes_or_no = 'gsgsdfsd'
         while yes_or_no not in ['Y', 'N']:
@@ -115,6 +119,8 @@ def regular_play(player_choice, player, deck):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
+            p_list = [dealer, player]
+            paste_pics_normal(p_list, 1)
 
 
 # def get_pics_normal(players):
@@ -189,37 +195,52 @@ def paste_pics_normal(players, dealer_cards_num=0, set=0):
             num_im.save(f'Num pics/{num}.jpg')
             back_im_copy.paste(num_im, (154, 300))
 
-            if not set2:
+            if set == 1:
+                set1_pic = Image.open('first_set.png')
+                back_im_copy.paste(set1_pic, (40, 400))
                 pics_paths = get_pics_for_a_set(player.cards)
                 i = 20
                 for path in pics_paths:
                     p = Image.open(path)
-                    back_im_copy.paste(p, (i, 475))
+                    back_im_copy.paste(p, (i, 450))
                     x, y = p.size
                     i += (x + 1)
-            else:
+            elif set == 2:
+                set1_pic = Image.open('second_set.png')
+                back_im_copy.paste(set1_pic, (40, 400))
                 pics_paths = get_pics_for_a_set(player.cards2)
                 i = 20
                 for path in pics_paths:
                     p = Image.open(path)
-                    back_im_copy.paste(p, (i, 475))
+                    back_im_copy.paste(p, (i, 450))
                     x, y = p.size
                     i += (x + 1)
 
-    # ==========================================================================================
-    #                 i = 20
-    #                 for path in pics_paths:
-    #                     s = Image.open('first_set.png')
-    #                     p = Image.open(path)
-    #                     back_im_copy.paste(s, (i,475))
-    #                     back_im_copy.paste(p, (i, 500))
-    #                     x, y = p.size
-    #                     i += (x + 1)
-    #             elif set == 2:
-    #                 i = 20
-    #                 for path in pics_paths:
-    #                     p = Image.open(path)
-    #                     back_im_copy.paste(p, (i,475))
-    #                     x,y = p.size
-    #                     i += (x+1)
+            else:
+                pics_paths = get_pics_for_a_set(player.cards)
+                i = 20
+                for path in pics_paths:
+                    p = Image.open(path)
+                    back_im_copy.paste(p, (i, 450))
+                    x, y = p.size
+                    i += (x + 1)
+
     back_im_copy.show()
+
+# d = Deck()
+# d.shuffle()
+# d.shuffle()
+# dealer = Player('Dealer', 0)
+# dealer.cards = d.deal(2)
+#
+# j = Player('John', 1)
+# k = Player('Kamlesh', 2)
+# k.cards2 = d.deal(8)
+# j.cards = d.deal(4)
+# k.cards = d.deal(5)
+#
+# l = [dealer, k]
+# paste_pics_normal(l, 3)
+
+
+

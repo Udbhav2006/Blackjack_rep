@@ -30,12 +30,8 @@ while new_game:
         deck.shuffle()
 
         # Dealing cards
-        for card in deck.deal(3):
+        for card in deck.deal(2):
             dealer.cards.append(card)
-        for cardabc in deck.all_cards:
-            if cardabc.rank == 'Ace':
-                dealer.cards.append(cardabc)
-                break
 
         print('')
         print('The dealer has 2 cards')
@@ -43,7 +39,7 @@ while new_game:
         print(f"One of the dealer's cards is {dealer.cards[0]}")
         print('')
         p_list = [dealer]
-        paste_pics_normal(p_list, 2)
+        paste_pics_normal(p_list, 1)
         starting_deal(player_list, deck)
 
 
@@ -58,7 +54,8 @@ while new_game:
             print(f"{player.name} has these cards:")
             for card in player.cards:
                 print(card)
-            paste_pics_normal(player)
+            p_list = [dealer, player]
+            paste_pics_normal(p_list, 1)
             print('')
 
             # Blackjack check and execution if needed
@@ -85,6 +82,8 @@ while new_game:
                     print('Current cards are: ')
                     for card in player.cards:
                         print(card)
+                        p_list = [dealer, player]
+                        paste_pics_normal(p_list, 1, 1)
                         print('')
                     player_choice = player.play()
 
@@ -98,6 +97,8 @@ while new_game:
                                 player.cards.append(card)
                             print(f"{player.name} now has these cards:")
                             for card in player.cards:
+                                p_list = [dealer, player]
+                                paste_pics_normal(p_list, 1, 1)
                                 print(card)
 
                             regular = False
@@ -111,6 +112,8 @@ while new_game:
                         print(f"{player.name} now has these cards in their first set:")
                         for card in player.cards:
                             print(card)
+                            p_list = [dealer, player]
+                            paste_pics_normal(p_list, 1, 1)
                         print('')
                         yes_or_no = 'gsgsdfsd'
                         while yes_or_no not in ['Y', 'N']:
@@ -125,10 +128,14 @@ while new_game:
                         print(f"{player.name} now has these cards in their first set:")
                         for card in player.cards:
                             print(card)
+                            p_list = [dealer, player]
+                            paste_pics_normal(p_list, 1, 1)
 
                     print('Play for the second set: ')
                     print('Current cards are: ')
                     for card in player.cards2:
+                        p_list = [dealer, player]
+                        paste_pics_normal(p_list, 1, 2)
                         print(card)
                     print('')
                     player_choice = player.play()
@@ -142,9 +149,11 @@ while new_game:
                             bets[player.index] = (bets[player.index]) * 2
                             for card in deck.deal(1):
                                 player.cards2.append(card)
-                            print(f"{player.name} now has these cards:")
+                            print(f"{player.name} now has these cards in their second set:")
                             for card in player.cards2:
                                 print(card)
+                                p_list = [dealer, player]
+                                paste_pics_normal(p_list, 1, 2)
 
                             regular = False
                             print('')
@@ -157,6 +166,8 @@ while new_game:
                         print(f"{player.name} now has these cards in their second set:")
                         for card in player.cards2:
                             print(card)
+                            p_list = [dealer, player]
+                            paste_pics_normal(p_list, 1, 2)
                         print('')
                         yes_or_no = 'gsgsdfsd'
                         while yes_or_no not in ['Y', 'N']:
@@ -172,6 +183,8 @@ while new_game:
                         print(f"{player.name} now has these cards in their second set:")
                         for card in player.cards2:
                             print(card)
+                            p_list = [dealer, player]
+                            paste_pics_normal(p_list, 1, 2)
                             regular = False
 
                 elif split_choice == 'C':
@@ -180,26 +193,26 @@ while new_game:
                     done = False
                     choice = 'tatti'
                     while player_choice == 'D' and choice != 'done':
-                        choice = double_down(player_choice, bets, player, deck)
+                        choice = double_down(player_choice, bets, player, deck, dealer)
                         if choice in ['H', 'S']:
                             player_choice = choice
                             break
 
                     if player_choice in ['H', 'S']:
-                        regular_play(player_choice, player, deck)
+                        regular_play(player_choice, player, deck, dealer)
 
             if regular:
                 player_choice = player.play()
                 done = False
                 choice = 'tatti'
                 while player_choice == 'D' and choice != 'done':
-                    choice = double_down(player_choice, bets, player, deck)
+                    choice = double_down(player_choice, bets, player, deck, dealer)
                     if choice in ['H', 'S']:
                         player_choice = choice
                         break
 
                 if player_choice in ['H', 'S']:
-                    regular_play(player_choice, player, deck)
+                    regular_play(player_choice, player, deck, dealer)
 
         # Conclude game
         print('')
@@ -231,6 +244,8 @@ while new_game:
                     print("The dealer has these cards:")
                     for card in dealer.cards:
                         print(card)
+                        p_list = [dealer, player]
+                        paste_pics_normal(p_list, 1)
 
                     if has_ace(set) or has_ace(dealer.cards):
                         print('')
