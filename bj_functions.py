@@ -141,8 +141,7 @@ def get_pics_for_a_set(cards_list):
 
 
 def paste_pics_normal(players, dealer_cards_num=0, set=0):
-    back_im = Image.open('big_back.png')
-    back_im_copy = back_im.copy()
+    back_im_copy = Image.open('big_back_copy.png')
 
     for player in players:
         if player.name == 'Dealer':
@@ -206,21 +205,3 @@ def paste_pics_normal(players, dealer_cards_num=0, set=0):
 
     back_im_copy.show()
     return back_im_copy
-
-# d = Deck()
-# d.shuffle()
-# d.shuffle()
-# dealer = Player('Dealer', 0)
-# dealer.cards = d.deal(2)
-#
-# j = Player('John', 1)
-# k = Player('Kamlesh', 2)
-# k.cards2 = d.deal(8)
-# j.cards = d.deal(4)
-# k.cards = d.deal(5)
-#
-# l = [dealer, k]
-# paste_pics_normal(l, 3)
-
-
-

@@ -39,9 +39,8 @@ while new_game:
         print(f"One of the dealer's cards is {dealer.cards[0]}")
         print('')
         p_list = [dealer]
-        pic = paste_pics_normal(p_list, 1)
+        paste_pics_normal(p_list, 1)
         starting_deal(player_list, deck)
-
 
         print('')
 
@@ -55,8 +54,7 @@ while new_game:
             for card in player.cards:
                 print(card)
             p_list = [dealer, player]
-            pic.close()
-            pic = paste_pics_normal(p_list, 1)
+            paste_pics_normal(p_list, 1)
             print('')
 
             # Blackjack check and execution if needed
@@ -84,8 +82,7 @@ while new_game:
                     for card in player.cards:
                         print(card)
                         p_list = [dealer, player]
-                        pic.close()
-                        pic = paste_pics_normal(p_list, 1, 1)
+                        paste_pics_normal(p_list, 1, 1)
                         print('')
                     player_choice = player.play()
 
@@ -100,8 +97,7 @@ while new_game:
                             print(f"{player.name} now has these cards:")
                             for card in player.cards:
                                 p_list = [dealer, player]
-                                pic.close()
-                                pic = paste_pics_normal(p_list, 1, 1)
+                                paste_pics_normal(p_list, 1, 1)
                                 print(card)
 
                             regular = False
@@ -116,8 +112,7 @@ while new_game:
                         for card in player.cards:
                             print(card)
                             p_list = [dealer, player]
-                            pic.close()
-                            pic = paste_pics_normal(p_list, 1, 1)
+                            paste_pics_normal(p_list, 1, 1)
                         print('')
                         yes_or_no = 'gsgsdfsd'
                         while yes_or_no not in ['Y', 'N']:
@@ -133,15 +128,13 @@ while new_game:
                         for card in player.cards:
                             print(card)
                             p_list = [dealer, player]
-                            pic.close()
-                            pic = paste_pics_normal(p_list, 1, 1)
+                            paste_pics_normal(p_list, 1, 1)
 
                     print('Play for the second set: ')
                     print('Current cards are: ')
                     for card in player.cards2:
                         p_list = [dealer, player]
-                        pic.close()
-                        pic = paste_pics_normal(p_list, 1, 2)
+                        paste_pics_normal(p_list, 1, 2)
                         print(card)
                     print('')
                     player_choice = player.play()
@@ -159,8 +152,7 @@ while new_game:
                             for card in player.cards2:
                                 print(card)
                                 p_list = [dealer, player]
-                                pic.close()
-                                pic = paste_pics_normal(p_list, 1, 2)
+                                paste_pics_normal(p_list, 1, 2)
 
                             regular = False
                             print('')
@@ -174,8 +166,7 @@ while new_game:
                         for card in player.cards2:
                             print(card)
                             p_list = [dealer, player]
-                            pic.close()
-                            pic = paste_pics_normal(p_list, 1, 2)
+                            paste_pics_normal(p_list, 1, 2)
                         print('')
                         yes_or_no = 'gsgsdfsd'
                         while yes_or_no not in ['Y', 'N']:
@@ -192,8 +183,7 @@ while new_game:
                         for card in player.cards2:
                             print(card)
                             p_list = [dealer, player]
-                            pic.close()
-                            pic = paste_pics_normal(p_list, 1, 2)
+                            paste_pics_normal(p_list, 1, 2)
                             regular = False
 
                 elif split_choice == 'C':
@@ -227,7 +217,6 @@ while new_game:
         print('')
         print('***************** Conclusion *****************')
 
-
         for player in player_list:
             player.cards_sets.append(player.cards)
             if len(player.cards2) != 0:
@@ -236,51 +225,50 @@ while new_game:
             a = 1
 
             for card_set in player.cards_sets:
-                set = []
-                for xyz in card_set:
-                    set.append(xyz)
+
                 if len(player.cards_sets) == 2:
                     print(f"Result for card set {a}: ")
                     p_list = [dealer, player]
-                    pic.close()
-                    pic = paste_pics_normal(p_list, 1, a)
+                    paste_pics_normal(p_list, 1, a)
                     a += 1
 
-                if bust(set) and has_ace(set) == False:
-                    print(f"{player.name}'s total value is {get_cards_val(set)}")
+                if bust(card_set) and not has_ace(card_set):
+                    print(f"{player.name}'s total value is {get_cards_val(card_set)}")
                     print(f"{player.name} has busted and has lost their bet.")
                     player.chips.number -= bets[player.index]
 
                 else:
-                    print("The dealer has these cards:")
-                    for card in dealer.cards:
-                        print(card)
+                    if len(player.cards_sets == 2):
+                        pass
+                    else:
+                        print("The dealer has these cards:")
+                        for card in dealer.cards:
+                            print(card)
                         p_list = [dealer, player]
-                        pic.close()
-                        pic = paste_pics_normal(p_list, 1)
+                        paste_pics_normal(p_list, 1)
 
-                    if has_ace(set) or has_ace(dealer.cards):
+                    if has_ace(card_set) or has_ace(dealer.cards):
                         print('')
                         print(f'{player.name} choose the value of Ace')
                         ace_val = int(choose_ace_val())
                         print(f'val of ace is {ace_val}`')
                         cards_val = 10000000
                         dealer_val = 99999999999999
-                        if has_ace(set) and has_ace(dealer.cards):
+                        if has_ace(card_set) and has_ace(dealer.cards):
                             cards_val = get_cards_val(player.cards, ace_val)
                             dealer_val = get_cards_val(dealer.cards, ace_val)
-                        elif has_ace(set):
-                            cards_val = get_cards_val(set, ace_val)
+                        elif has_ace(card_set):
+                            cards_val = get_cards_val(card_set, ace_val)
                             dealer_val = get_cards_val(dealer.cards)
                         elif has_ace(dealer.cards):
-                            cards_val = get_cards_val(set)
+                            cards_val = get_cards_val(card_set)
                             dealer_val = get_cards_val(dealer.cards, ace_val)
                     else:
-                        cards_val = get_cards_val(set)
+                        cards_val = get_cards_val(card_set)
                         dealer_val = get_cards_val(dealer.cards)
                     print(f"Dealer's total value is {dealer_val}")
 
-                    if bust(set):
+                    if bust(card_set):
                         player.chips.number -= bets[player.index]
                         print('')
                         print(f"{player.name}'s total value is {cards_val}")
@@ -304,10 +292,10 @@ while new_game:
                                 print(card)
 
                             if has_ace(dealer.cards):
-                                cards_val = get_cards_val(set)
+                                cards_val = get_cards_val(card_set)
                                 dealer_val = get_cards_val(dealer.cards, ace_val)
                             else:
-                                cards_val = get_cards_val(set)
+                                cards_val = get_cards_val(card_set)
                                 dealer_val = get_cards_val(dealer.cards)
 
                             if dealer_val > 21:
@@ -331,8 +319,6 @@ while new_game:
                         print(f"{player.name} is closer to 21 than the dealer and wins their bet")
                         player.chips.number += bets[player.index]
                         winners_list.append(player)
-
-                pic.close()
 
         print('\n')
         print('END OF ROUND')
