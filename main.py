@@ -30,7 +30,7 @@ while new_game:
         deck.shuffle()
 
         # Dealing cards
-        for card in deck.deal(1):
+        for card in deck.deal(3):
             dealer.cards.append(card)
         for cardabc in deck.all_cards:
             if cardabc.rank == 'Ace':
@@ -42,7 +42,8 @@ while new_game:
         print('You can only see one card of the dealer')
         print(f"One of the dealer's cards is {dealer.cards[0]}")
         print('')
-        paste_pics_normal(dealer, 1)
+        p_list = [dealer]
+        paste_pics_normal(p_list, 2)
         starting_deal(player_list, deck)
 
 

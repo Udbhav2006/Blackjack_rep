@@ -140,7 +140,6 @@ def regular_play(player_choice, player, deck):
 def get_pics_for_a_set(cards_list):
     pics_paths = []
     for card in cards_list:
-        print(card)
         for pic in os.scandir('Cards_pics'):
             path_list = pic.path.split('\\')
             path = ''
@@ -155,56 +154,57 @@ def get_pics_for_a_set(cards_list):
     return pics_paths
 
 
-def paste_pics_normal(player, dealer_cards_num=0, set2=False):
+def paste_pics_normal(players, dealer_cards_num=0, set=0):
     back_im = Image.open('big_back.png')
     back_im_copy = back_im.copy()
 
-    if player.name == 'Dealer':
-        rest_of_cards = 0
-        l = 0
-        while l < dealer_cards_num:
-            print('Entered while')
-            i = 200
-            pics_paths = get_pics_for_a_set(player.cards)
-            for path in pics_paths:
-                p = Image.open(path)
-                back_im_copy.paste(p, (i, 100))
-                x, y = p.size
-                i += (x + 1)
-                rest_of_cards += 1
-                l += 1
+    for player in players:
+        if player.name == 'Dealer':
 
-        i = 200
-        for each in range(0,rest_of_cards):
-            p = Image.open('Cards_pics/card_back.png')
-            p.thumbnail((150,150))
-            p.save('Cards_pics/card_back.png')
-            back_im_copy.paste(p, (i, 100))
-            a, b = p.size
-            i += (a + 1)
-    else:
-        num = player.index
-        num_im = Image.open(f'Num pics/{player.index}.jpg')
-        num_im.thumbnail((80, 80))
-        num_im.save(f'Num pics/{num}.jpg')
-        back_im_copy.paste(num_im, (154, 300))
+            l = 0
 
-        if not set2:
-            pics_paths = get_pics_for_a_set(player.cards)
+
             i = 20
+            pics_paths = get_pics_for_a_set(player.cards)
             for path in pics_paths:
-                p = Image.open(path)
-                back_im_copy.paste(p, (i, 475))
-                x, y = p.size
-                i += (x + 1)
+                while l < dealer_cards_num:
+                    print('Entered while')
+                    p = Image.open(path)
+                    back_im_copy.paste(p, (i, 100))
+                    x, y = p.size
+                    i += (x + 2)
+                    l += 1
+
+            rest_of_cards = len(player.cards)-dealer_cards_num
+            g = i+1
+            for each in range(0, rest_of_cards):
+                p = Image.open('Cards_pics/card_back.png')
+                back_im_copy.paste(p, (g, 100))
+                a, b = p.size
+                g += (a + 2)
         else:
-            pics_paths = get_pics_for_a_set(player.cards2)
-            i = 20
-            for path in pics_paths:
-                p = Image.open(path)
-                back_im_copy.paste(p, (i, 475))
-                x, y = p.size
-                i += (x + 1)
+            num = player.index
+            num_im = Image.open(f'Num pics/{player.index}.jpg')
+            num_im.thumbnail((80, 80))
+            num_im.save(f'Num pics/{num}.jpg')
+            back_im_copy.paste(num_im, (154, 300))
+
+            if not set2:
+                pics_paths = get_pics_for_a_set(player.cards)
+                i = 20
+                for path in pics_paths:
+                    p = Image.open(path)
+                    back_im_copy.paste(p, (i, 475))
+                    x, y = p.size
+                    i += (x + 1)
+            else:
+                pics_paths = get_pics_for_a_set(player.cards2)
+                i = 20
+                for path in pics_paths:
+                    p = Image.open(path)
+                    back_im_copy.paste(p, (i, 475))
+                    x, y = p.size
+                    i += (x + 1)
 
     # ==========================================================================================
     #                 i = 20
