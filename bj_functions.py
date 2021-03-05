@@ -52,8 +52,6 @@ def get_cards_val(func_cards_list, func_ace_val=0):
 
     if not has_ace(func_cards_list):
 
-        print(func_cards_list)
-
         for each_card in func_cards_list:
             cards_val += each_card.value
         return cards_val
@@ -102,8 +100,6 @@ def regular_play(player_choice, player, deck, dealer):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
-        p_list = [dealer, player]
-        paste_pics_normal(p_list, 1)
         print('')
         yes_or_no = 'gsgsdfsd'
         while yes_or_no not in ['Y', 'N']:
@@ -119,8 +115,6 @@ def regular_play(player_choice, player, deck, dealer):
         print(f"{player.name} now has these cards:")
         for card in player.cards:
             print(card)
-        p_list = [dealer, player]
-        paste_pics_normal(p_list, 1)
 
 
 def get_pics_for_a_set(cards_list):
@@ -140,8 +134,13 @@ def get_pics_for_a_set(cards_list):
     return pics_paths
 
 
-def paste_pics_normal(players, dealer_cards_num=0, set=0):
-    back_im_copy = Image.open('big_back_copy.png')
+def paste_pics_normal(players, dealer_cards_num=0, set=0, c=False):
+    back_im_copy = Image.open('big_back.png')
+
+    # if c:
+    #     c_pic = Image.open('conclusion.jpg')
+    #     c_pic.thumbnail((200,200))
+    #     back_im_copy.paste(c_pic, (900, 50))
 
     for player in players:
         if player.name == 'Dealer':

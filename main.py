@@ -182,8 +182,6 @@ while new_game:
                         print(f"{player.name} now has these cards in their second set:")
                         for card in player.cards2:
                             print(card)
-                            p_list = [dealer, player]
-                            paste_pics_normal(p_list, 1, 2)
                             regular = False
 
                 elif split_choice == 'C':
@@ -228,8 +226,6 @@ while new_game:
 
                 if len(player.cards_sets) == 2:
                     print(f"Result for card set {a}: ")
-                    p_list = [dealer, player]
-                    paste_pics_normal(p_list, 1, a)
                     a += 1
 
                 if bust(card_set) and not has_ace(card_set):
@@ -238,14 +234,14 @@ while new_game:
                     player.chips.number -= bets[player.index]
 
                 else:
-                    if len(player.cards_sets == 2):
+                    if len(player.cards_sets) == 2:
                         pass
                     else:
                         print("The dealer has these cards:")
                         for card in dealer.cards:
                             print(card)
                         p_list = [dealer, player]
-                        paste_pics_normal(p_list, 1)
+                        paste_pics_normal(p_list, len(dealer.cards))
 
                     if has_ace(card_set) or has_ace(dealer.cards):
                         print('')
