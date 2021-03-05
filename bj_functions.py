@@ -108,6 +108,8 @@ def regular_play(player_choice, player, deck, dealer):
             continue
         if yes_or_no == 'N':
             print(f"{player.name} is done hitting.")
+            p_list = [dealer, player]
+            paste_pics_normal(p_list, 1)
             break
 
     if player_choice == 'S':

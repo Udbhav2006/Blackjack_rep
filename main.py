@@ -120,7 +120,14 @@ while new_game:
                         if yes_or_no == 'Y':
                             continue
                         if yes_or_no == 'N':
-                            player_choice = 'S'
+                            print(f"{player.name} is done hitting.")
+                            print(f"{player.name} now has these cards in their first set:")
+                            for card in player.cards:
+                                print(card)
+                                p_list = [dealer, player]
+                                paste_pics_normal(p_list, 1, 1)
+                            print('')
+                            break
 
                     if player_choice == 'S':
                         print(f'{player.name} has chosen to stay.')
@@ -175,6 +182,12 @@ while new_game:
                             continue
                         if yes_or_no == 'N':
                             print(f"{player.name} is done hitting.")
+                            print(f"{player.name} now has these cards in their second set:")
+                            for card in player.cards2:
+                                print(card)
+                                p_list = [dealer, player]
+                                paste_pics_normal(p_list, 1, 2)
+                            print('')
                             break
 
                     if player_choice == 'S':
