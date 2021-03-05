@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6387e9a8-0edc-4ea0-8342-205cc7ef41e0" name="Default Changelist" comment="Fixed some bugs...latest working as of 5/3/2021">
+    <list default="true" id="6387e9a8-0edc-4ea0-8342-205cc7ef41e0" name="Default Changelist" comment="Fixed some bugs...latest working as of 5/3/2021 @ 1pm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Num pics/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Num pics/3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bj_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bj_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614928530288</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Fixed some bugs...latest working as of 5/3/2021 @ 1pm">
+      <created>1614929039592</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1614929039592</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,6 +382,7 @@
     <MESSAGE value="PIC REPRESENTATION DONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!" />
     <MESSAGE value="Done!" />
     <MESSAGE value="Fixed some bugs...latest working as of 5/3/2021" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs...latest working as of 5/3/2021" />
+    <MESSAGE value="Fixed some bugs...latest working as of 5/3/2021 @ 1pm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs...latest working as of 5/3/2021 @ 1pm" />
   </component>
 </project>
