@@ -140,26 +140,22 @@ def get_pics_for_a_set(cards_list):
 def paste_pics_normal(players, dealer_cards_num=0, set=0, c=False):
     back_im_copy = Image.open('big_back.png')
 
-    # if c:
-    #     c_pic = Image.open('conclusion.jpg')
-    #     c_pic.thumbnail((200,200))
-    #     back_im_copy.paste(c_pic, (900, 50))
-
     for player in players:
         if player.name == 'Dealer':
 
             l = 0
-
-
             i = 20
             pics_paths = get_pics_for_a_set(player.cards)
+            # while l < dealer_cards_num:
             for path in pics_paths:
-                while l < dealer_cards_num:
-                    p = Image.open(path)
-                    back_im_copy.paste(p, (i, 100))
-                    x, y = p.size
-                    i += (x + 2)
-                    l += 1
+
+                p = Image.open(path)
+                back_im_copy.paste(p, (i, 100))
+                x, y = p.size
+                i += (x + 2)
+                l += 1
+                if l >= dealer_cards_num:
+                    break
 
             rest_of_cards = len(player.cards)-dealer_cards_num
             g = i+1
@@ -207,3 +203,4 @@ def paste_pics_normal(players, dealer_cards_num=0, set=0, c=False):
 
     back_im_copy.show()
     return back_im_copy
+

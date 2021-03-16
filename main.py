@@ -30,8 +30,7 @@ while new_game:
         deck.shuffle()
 
         # Dealing cards
-        for card in deck.deal(2):
-            dealer.cards.append(card)
+        dealer.cards = deck.deal(2)
 
         print('')
         print('The dealer has 2 cards')

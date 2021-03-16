@@ -4,6 +4,7 @@
     <list default="true" id="6387e9a8-0edc-4ea0-8342-205cc7ef41e0" name="Default Changelist" comment="Fixed some bugs...latest working as of 5/3/2021 @ 1pm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bj_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bj_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
